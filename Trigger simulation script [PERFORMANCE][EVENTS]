@@ -1,0 +1,19 @@
+//This script requires a game logic entity and any desired trigger to work correctly
+//No script files required
+
+
+// This script will disable simulation on all desired units for use when triggering events 
+// and to save on performance. If you are not triggering a specific event, but rather you
+// want AI or objects to activate when players are nearby, instead use the vanilla 'dynamic
+// simulation' option available in group and performance settings.
+
+// #1 Create a game logic entity and synchronize all desired objects; input this code in the 'init' segment:
+
+grp = synchronizedObjects this;
+{_x enableSimulationGlobal false} forEach grp;
+
+// #2 Set up a custom trigger with the desired conditions; input the following code in the 'on activation' segment:
+
+{_x enableSimulationGlobal true} forEach grp;
+
+// Edit the code as you wish to create the desired effect
