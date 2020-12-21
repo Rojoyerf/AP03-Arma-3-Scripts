@@ -1,0 +1,9 @@
+// PLACING INTEL IN A MISSION CAN BE USED TO FEED PLAYERS PARTS OF A STORY. THEY CAN BE VERY USEFUL TOOLS IF USED TO 
+// DRIP FEED INCOMPLETE INFORMATION TO THE PLAYERS IN A WAY THAT HELPS THEM PIECE TOGETHER A STORY AS THEY PLAY THROUGH A MISSION
+
+// Place this script into a photo object to display an image and annotation to be viewed on interaction
+
+["init", [this, "imagepath.jpg", "Display Text"]] call BIS_fnc_initLeaflet;
+
+// To make intel which can be picked up by the player you will need to use an acex_intelitems photo or notepad
+// this script can be placed on an acex_intelitems photo to be examined in high resolution before picking it up
