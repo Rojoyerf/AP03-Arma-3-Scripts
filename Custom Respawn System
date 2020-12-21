@@ -1,0 +1,25 @@
+// Add custom respawn
+
+var = [side/group/unit, position, "Spawn point Name"] call 
+ BIS_fnc_addRespawnPosition;
+ 
+// Add respawn at position of object
+
+var = [side/group/unit,(getPos object),"Spawn point Name"] call 
+ BIS_fnc_addRespawnPosition;
+ 
+// Respawn in vehicle (put this in the config)
+
+var = [side/group/unit, this,"Spawn point Name"] call 
+ BIS_fnc_addRespawnPosition;
+
+// Remove custom respawn
+
+var call BIS_fnc_removeRespawnPosition;
+
+// notification to players
+
+hint "Respawn Enabled";
+
+
+// side: east, west, independent, civilian
