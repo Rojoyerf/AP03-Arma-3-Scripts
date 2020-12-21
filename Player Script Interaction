@@ -1,0 +1,14 @@
+this addAction ["Interaction name", 
+{
+ 
+}, 
+arguments, // Not sure how this works
+priority, //Not sure how this works
+showWindow, // Whether you see the "Interaction name" appear on screen when approaching the object (default: true)
+hideOnUse, // Whether the "Interaction name" disappears after using the object (default: true)
+shortcut, // Unsure what this does
+{
+    // Script conditions that have to be met
+}, 
+radius, // Maximum distance from player to work (default: 50) 
+];
