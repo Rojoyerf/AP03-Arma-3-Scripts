@@ -1,0 +1,13 @@
+openMap [true, false]
+mapAnimAdd [1, 0.5, markerPos "lol"]; 
+mapAnimCommit; 
+
+createMarker [name, position, channel, creator] 
+"var" setMarkerType "type";
+"var" setMarkerColor "colour";
+"var" setMarkerText "text";
+["lol",(getMarkerPos "wp_1"),1.5] call BIS_fnc_moveMarker;
+["lol"] call BIS_fnc_hideMarker;
+["lol"] call BIS_fnc_showMarker;
+["lol", 0.5, 5] call BIS_fnc_blinkMarker;
+["lol",1.5,10,1.5,45] spawn BIS_fnc_cancelMarker;
