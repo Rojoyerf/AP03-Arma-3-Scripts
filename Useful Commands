@@ -8,8 +8,6 @@
 
 
 
-getPos object;					// Alt: origin getPos [distance, heading];
-
 /* Player Interaction */
 
 object addAction [title, script, arguments]; 	// Alt: object addAction [title, script, arguments, priority, showWindow, hideOnUse, shortcut, condition, radius, unconscious, selection, memoryPoint] 
@@ -106,15 +104,16 @@ inAreaArray				// positions inAreaArray area			# are the given positions in an a
 
 /* Mission Control */
 
+getPos                          //getPos object;					# Alt: origin getPos [distance, heading];
 enableSimulationGlobal			// object enableSimulationGlobal bool; 				# Call on server only // Alt: {_x enableSimulationGlobal bool} forEach array;
 enableDynamicSimulation			// object/group enableDynamicSimulation bool;
-hideObjectGlobal			// object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
+hideObjectGlobal			    // object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
 triggerDynamicSimulation		// unit/group triggerDynamicSimulation bool;
 
-BIS_fnc_spawnGroup			// _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup	# toSpawn = array of classes
+BIS_fnc_spawnGroup			    // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup	# toSpawn = array of classes
 
-createGuardedPoint			//
-addWaypoint				//
+createGuardedPoint			    //
+addWaypoint				        //
 
 setWaypointBehaviour			//
 setWaypointCombatMode			//
@@ -126,14 +125,14 @@ setWaypointHousePosition		//
 setWaypointLoiterAltitude		//
 setWaypointLoiterRadius			//
 setWaypointLoiterType			//
-setWaypointName				//
-setWaypointPosition			//
-setWaypointScript			//
-setWaypointSpeed			//
+setWaypointName				    //
+setWaypointPosition			    //
+setWaypointScript			    //
+setWaypointSpeed			    //
 setWaypointStatements			//
-setWaypointTimeout			//
-setWaypointType				//
-setWaypointVisible			//
+setWaypointTimeout			    //
+setWaypointType				    //
+setWaypointVisible			    //
 
 
 
@@ -147,7 +146,7 @@ setWaypointVisible			//
 setPlayerRespawnTime			// setPlayerRespawnTime interval;
 
 BIS_fnc_addRespawnPosition		// _id = [<target>,<position>] call BIS_fnc_addRespawnPosition; 
-BIS_fnc_removeRespawnPosition		// [target,_id] call BIS_fnc_removeRespawnPosition;
+BIS_fnc_removeRespawnPosition	// [target,_id] call BIS_fnc_removeRespawnPosition;
 
 
 
