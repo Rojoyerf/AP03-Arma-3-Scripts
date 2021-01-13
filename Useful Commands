@@ -115,7 +115,7 @@ group                           // group object;                                
 units                           // units group/object;                                          # Returns array of units assigned to group
 leader                          // leader group/object;                                         # Returns leader of a group
 
-createGuardedPoint			    // _id = createGuardedPoint [side, position, objectMapID, vehicle];    # creates a position the AI will attempt to seize and hold: https://community.bistudio.com/wiki/createGuardedPoint
+createGuardedPoint			    // _id = createGuardedPoint [side, position];                   # empty, east, west, independent, civilian
 addWaypoint				        // _id = groupName addWaypoint [center, radius, index, name];
 copyWaypoints                   // groupTo copyWaypoints groupFrom;                              # Copy the chain of waypoints from source to target group.
 
