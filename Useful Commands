@@ -111,6 +111,9 @@ hideObjectGlobal			    // object hideObjectGlobal bool;				# Call on server only
 triggerDynamicSimulation		// unit/group triggerDynamicSimulation bool;
 
 BIS_fnc_spawnGroup			    // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup;	# toSpawn = array of classes
+group                           // group object;                                                # Returns group a unit is assigned to
+units                           // units group/object;                                          # Returns array of units assigned to group
+leader                          // leader group/object;                                         # Returns leader of a group
 
 createGuardedPoint			    // _id = createGuardedPoint [side, position, objectMapID, vehicle];    # creates a position the AI will attempt to seize and hold: https://community.bistudio.com/wiki/createGuardedPoint
 addWaypoint				        // _id = groupName addWaypoint [center, radius, index, name];
