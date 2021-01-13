@@ -1,0 +1,153 @@
+/* Intro Control */
+
+
+
+
+
+
+
+
+
+getPos object;					// Alt: origin getPos [distance, heading];
+
+/* Player Interaction */
+
+object addAction [title, script, arguments]; 	// Alt: object addAction [title, script, arguments, priority, showWindow, hideOnUse, shortcut, condition, radius, unconscious, selection, memoryPoint] 
+_action = [<actionName>,<displayName>,<icon>,{ statement }] call ace_interact_menu_fnc_createAction;
+[object, 0, [parent of new action], _action] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+
+
+
+
+/* Map Markers */
+    
+createMarker				// _id = createMarker [name, position, channel, creator];
+deleteMarker				// deleteMarker name;
+
+getMarkerColor				// getMarkerColor markerName;
+getMarkerPos				// getMarkerPos markerName;
+getMarkerSize				// getMarkerSize markerName;
+getMarkerType				// getMarkerType markerName;
+
+
+setMarkerAlpha				// marker setMarkerAlpha alpha; 		# how transparent the marker will be
+setMarkerBrush				// markerName setMarkerBrush brush; 		# For "RECTANGLE" or "ELLIPSE" markers
+setMarkerColor				// markerName setMarkerColor color;		# Colours: https://community.bistudio.com/wiki/Arma_3:_CfgMarkerColors
+setMarkerDir				// markerName setMarkerDir angle; 
+setMarkerPos				// markerName setMarkerPos pos;
+setMarkerShape				// markerName setMarkerShape shape;		# "ICON", "RECTANGLE", "ELLIPSE"
+setMarkerSize				// markerName setMarkerSize [a-axis, b-axis]; 
+setMarkerText				// markerName setMarkerText text; 
+setMarkerType				// markerName setMarkerType type;		# Markers: https://community.bistudio.com/wiki/CfgMarkers
+
+openMap					// openMap [show, forced];
+mapAnimAdd 				// mapAnimAdd [time, zoom, position];  		# Adds frame to map animation
+mapAnimClear				// mapAnimClear; 				# clear map animations
+mapAnimCommit				// mapAnimCommit;				# Play map animation
+mapAnimDone				// mapAnimDone;					# Returns if animation is complete as bool
+visibleMap				// visibleMap;					# Returns if map is open as bool
+
+BIS_fnc_markerCreate			// ?
+BIS_fnc_markerPath			// [start, end, spacing, params] call BIS_fnc_markerPath;	# Create marker(s) between two points. 
+
+BIS fnc colorMarker			// [marker, color, duration] spawn BIS_fnc_colorMarker;		# Changes colour with an effect(?)
+BIS fnc changeColorMarker		// [marker, color, duration] spawn BIS_fnc_changeColorMarker;	# Changes colour over time (blending?)
+BIS_fnc_drawAO				// [[triggerName],''distance''] call BIS_fnc_drawAO;		# Draws a dashed line around the outer edges of a trigger. 
+BIS_fnc_isInZoom			// [_min,_max] call BIS_fnc_isInZoom; 				# Checks if map zoom level is in between given interval (min,max) 
+BIS_fnc_locationDescription		// position call BIS_fnc_locationDescription;			# Return location description (e.g. "NE of Agia Marina") 
+
+BIS fnc mapAnimAdd			// [duration, toZoom, toPosition, interpModeZoom, interpModePosition, fromZoom, fromPosition] call BIS_fnc_mapAnimAdd;		# Local function
+BIS fnc mapAnimClear			// [] call BIS_fnc_mapAnimClear;								# Clears map animations?
+BIS fnc blinkMarker			// [marker, blinkDuration, blinkAmount] spawn BIS_fnc_blinkMarker;				# Makes the marker "blink"
+BIS fnc cancelMarker			// [marker, duration, fadeTime, sizeMultiplier, angleOffset] spawn BIS_fnc_cancelMarker;	# Places a red 'X' mark over the marker
+BIS_fnc_moveMarker			// [marker, newPosition, duration, interpolationType] call BIS_fnc_moveMarker;			
+BIS_fnc_resizeMarker			// [marker, size, duration] spawn BIS_fnc_resizeMarker;
+BIS_fnc_rotateMarker			// [marker, newAzimuth, absoluteOrRelativ, shortestTurn, duraton] spawn BIS_fnc_rotateMarker
+BIS_fnc_hideMarker			// [marker, duration] spawn BIS_fnc_hideMarker
+BIS_fnc_hideMarkerArray			// [markerArray, duration] spawn BIS_fnc_hideMarkerArray		# Hides markers one-by-one 
+
+
+
+
+
+
+
+
+/* Conditions Control */
+
+createTrigger				// ?
+
+setTriggerArea				// trigger setTriggerArea [a, b, angle, isRectangle, c];
+setTriggerType				// trigger setTriggerType action; 						# "NONE", "EAST G", "WEST G", "GUER G"
+setTriggerActivation			// trigger setTriggerActivation [activatedBy, activationType, repeating?]; 	# Parameters: https://community.bistudio.com/wiki/setTriggerActivation
+setTriggerInterval			// trigger setTriggerInterval interval;
+
+triggerActivated			// triggerActivated trigger; 							# Returns true if the trigger has been activated. 
+triggerActivation			// triggerActivation trigger; 							# Returns trigger activation in the form [by, type, repeating]. 
+
+setMusicEffect				// trigger setMusicEffect track;						# Tracks: https://community.bistudio.com/wiki/Arma_3:_CfgMusic
+setSoundEffect				// trigger setSoundEffect [sound, voice, soundEnv, soundDet];			# Parameters: https://community.bistudio.com/wiki/setSoundEffect
+setTitleEffect				// trigger setTitleEffect [type, effect, text];					# Parameters: https://community.bistudio.com/wiki/setTitleEffect
+
+list					// list trigger					# units who would activate a given trigger
+inArea					// position inArea trigger 			# is a given position in an area (eg. position of a certan object)
+inAreaArray				// positions inAreaArray area			# are the given positions in an area (eg. position of a certan objects)
+
+
+
+
+
+
+
+
+/* Mission Control */
+
+enableSimulationGlobal			// object enableSimulationGlobal bool; 				# Call on server only // Alt: {_x enableSimulationGlobal bool} forEach array;
+enableDynamicSimulation			// object/group enableDynamicSimulation bool;
+hideObjectGlobal			// object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
+triggerDynamicSimulation		// unit/group triggerDynamicSimulation bool;
+
+BIS_fnc_spawnGroup			// _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup	# toSpawn = array of classes
+
+createGuardedPoint			//
+addWaypoint				//
+
+setWaypointBehaviour			//
+setWaypointCombatMode			//
+setWaypointCompletionRadius		//
+setWaypointDescription			//
+setWaypointForceBehaviour		//
+setWaypointFormation			//
+setWaypointHousePosition		//
+setWaypointLoiterAltitude		//
+setWaypointLoiterRadius			//
+setWaypointLoiterType			//
+setWaypointName				//
+setWaypointPosition			//
+setWaypointScript			//
+setWaypointSpeed			//
+setWaypointStatements			//
+setWaypointTimeout			//
+setWaypointType				//
+setWaypointVisible			//
+
+
+
+
+
+
+
+
+/* Player Respawn Control */
+
+setPlayerRespawnTime			// setPlayerRespawnTime interval;
+
+BIS_fnc_addRespawnPosition		// _id = [<target>,<position>] call BIS_fnc_addRespawnPosition; 
+BIS_fnc_removeRespawnPosition		// [target,_id] call BIS_fnc_removeRespawnPosition;
+
+
+
