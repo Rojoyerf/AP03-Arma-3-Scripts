@@ -104,35 +104,33 @@ inAreaArray				// positions inAreaArray area			# are the given positions in an a
 
 /* Mission Control */
 
-getPos                          //getPos object;					# Alt: origin getPos [distance, heading];
+getPos                          // getPos object;					                # Alt: origin getPos [distance, heading];
 enableSimulationGlobal			// object enableSimulationGlobal bool; 				# Call on server only // Alt: {_x enableSimulationGlobal bool} forEach array;
 enableDynamicSimulation			// object/group enableDynamicSimulation bool;
 hideObjectGlobal			    // object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
 triggerDynamicSimulation		// unit/group triggerDynamicSimulation bool;
 
-BIS_fnc_spawnGroup			    // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup	# toSpawn = array of classes
+BIS_fnc_spawnGroup			    // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup;	# toSpawn = array of classes
 
-createGuardedPoint			    //
-addWaypoint				        //
+createGuardedPoint			    // _id = createGuardedPoint [side, position, objectMapID, vehicle];    # creates a position the AI will attempt to seize and hold: https://community.bistudio.com/wiki/createGuardedPoint
+addWaypoint				        // _id = groupName addWaypoint [center, radius, index, name];
+copyWaypoints                   // groupTo copyWaypoints groupFrom;                              # Copy the chain of waypoints from source to target group.
 
-setWaypointBehaviour			//
-setWaypointCombatMode			//
-setWaypointCompletionRadius		//
-setWaypointDescription			//
-setWaypointForceBehaviour		//
-setWaypointFormation			//
-setWaypointHousePosition		//
-setWaypointLoiterAltitude		//
-setWaypointLoiterRadius			//
-setWaypointLoiterType			//
-setWaypointName				    //
-setWaypointPosition			    //
-setWaypointScript			    //
-setWaypointSpeed			    //
-setWaypointStatements			//
-setWaypointTimeout			    //
-setWaypointType				    //
-setWaypointVisible			    //
+setWaypointType				    // waypoint setWaypointType type                    # "MOVE", "DESTROY", "GETIN", "SAD" (Seek And Destroy), "JOIN", "LEADER", "GETOUT", "CYCLE", "LOAD", "UNLOAD", "TR UNLOAD" (transport unload), "HOLD", "SENTRY", "GUARD", "TALK", "SCRIPTED", "SUPPORT", "GETIN NEAREST", "DISMISS", "LOITER" , "HOOK", "UNHOOK"
+setWaypointBehaviour			// waypoint setWaypointBehaviour mode;              # "UNCHANGED", "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"
+setWaypointCombatMode			// waypoint setWaypointCombatMode mode;             # Rules of Engagement: https://community.bistudio.com/wiki/setWaypointCombatMode
+setWaypointCompletionRadius		// waypoint setWaypointCompletionRadius radius;     # Waypoint completed within a certain range
+setWaypointFormation			// waypoint setWaypointFormation formation;         # "NO CHANGE", "COLUMN", "STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND"
+setWaypointSpeed			    // waypoint setWaypointSpeed mode;                  # "UNCHANGED", "LIMITED", "NORMAL", "FULL"
+setWaypointForceBehaviour		// waypoint setWaypointForceBehaviour bool;         # Disables autocombat 
+setWaypointLoiterAltitude		// waypoint setWaypointLoiterAltitude loiterAltitude;    #M y guess is this works for aircraft?
+setWaypointLoiterRadius			// waypoint setWaypointLoiterRadius radius;         # Loiter system?
+setWaypointPosition			    // waypoint setWaypointPosition [center, radius];
+setWaypointScript			    // waypoint setWaypointScript command;
+setWaypointStatements			// waypoint setWaypointStatements [condition, statement] # Waypoint completed upon condition, then executes statement; this = groupLeader; thisList = groupUnits
+setWaypointTimeout			    // waypoint setWaypointTimeout [min, mid, max]      # Time between condition satisfaction and completion of waypoint
+
+
 
 
 
