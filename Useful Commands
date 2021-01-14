@@ -109,7 +109,7 @@ setTitleEffect				// trigger setTitleEffect [type, effect, text];					# Paramete
 
 list					// list trigger					# units who would activate a given trigger
 inArea					// position inArea trigger 			# is a given position in an area (eg. position of a certan object)
-inAreaArray				// positions inAreaArray area			# are the given positions in an area (eg. position of a certan objects)
+inAreaArray				// positions inAreaArray area		        # are the given positions in an area (eg. position of a certan objects)
 
 
 
@@ -120,34 +120,47 @@ inAreaArray				// positions inAreaArray area			# are the given positions in an a
 
 /* Mission Control */
 
-getPos                          // getPos object;					                # Alt: origin getPos [distance, heading];
-enableSimulationGlobal			// object enableSimulationGlobal bool; 				# Call on server only // Alt: {_x enableSimulationGlobal bool} forEach array;
-enableDynamicSimulation			// object/group enableDynamicSimulation bool;
-hideObjectGlobal			    // object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
-triggerDynamicSimulation		// unit/group triggerDynamicSimulation bool;
+getPos                                  // getPos object;					                # Alt: origin getPos [distance, heading];
+enableSimulationGlobal		        // object enableSimulationGlobal bool; 				# Call on server only // Alt: {_x enableSimulationGlobal bool} forEach array;
+enableDynamicSimulation		        // object/group enableDynamicSimulation bool;
+hideObjectGlobal		        // object hideObjectGlobal bool;				# Call on server only // Alt: {_x hideObjectGlobal bool} forEach array;
+triggerDynamicSimulation	        // unit/group triggerDynamicSimulation bool;
 
-BIS_fnc_spawnGroup			    // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup;	# toSpawn = array of classes
-group                           // group object;                                                # Returns group a unit is assigned to
-units                           // units group/object;                                          # Returns array of units assigned to group
-leader                          // leader group/object;                                         # Returns leader of a group
+BIS_fnc_spawnGroup	                // _id = [position, side, [toSpawn]] call BIS_fnc_spawnGroup;	# toSpawn = array of classes
+group                                   // group object;                                                # Returns group a unit is assigned to
+units                                   // units group/object;                                          # Returns array of units assigned to group
+leader                                  // leader group/object;                                         # Returns leader of a group
 
-createGuardedPoint			    // _id = createGuardedPoint [side, position, -1, objNull];                   # empty, east, west, independent, civilian
-addWaypoint				        // _id = groupName addWaypoint [center, radius, index, name];
-copyWaypoints                   // groupTo copyWaypoints groupFrom;                              # Copy the chain of waypoints from source to target group.
+lambs_danger_dangerRadio                // <unit> setVariable ["lambs_danger_dangerRadio",true];        # Group commander choses best "radioman" to transmit information
+lambs_danger_disableAI                  // <unit> setVariable ["lambs_danger_disableAI",true];          # Entering buildings, the reaction state to combat, panicking, etc.
+lambs_danger_disableGroupAI             // <group> setVariable ["lambs_danger_disableGroupAI",true];    # Calling for artillery, coordinated building assaults, hiding from tanks or airplanes, remanning static weapons, scanning with binocular, etc.
+lambs_danger_dangerFormation            // <group> setVariable ["lambs_danger_dangerFormation","FILE"]; # Formation to change to on AUTOCOMBAT (formations also define behavior with lambs)
 
-setWaypointType				    // waypoint setWaypointType type                    # "MOVE", "DESTROY", "GETIN", "SAD" (Seek And Destroy), "JOIN", "LEADER", "GETOUT", "CYCLE", "LOAD", "UNLOAD", "TR UNLOAD" (transport unload), "HOLD", "SENTRY", "GUARD", "TALK", "SCRIPTED", "SUPPORT", "GETIN NEAREST", "DISMISS", "LOITER" , "HOOK", "UNHOOK"
-setWaypointBehaviour			// waypoint setWaypointBehaviour mode;              # "UNCHANGED", "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"
-setWaypointCombatMode			// waypoint setWaypointCombatMode mode;             # Rules of Engagement: https://community.bistudio.com/wiki/setWaypointCombatMode
-setWaypointCompletionRadius		// waypoint setWaypointCompletionRadius radius;     # Waypoint completed within a certain range
-setWaypointFormation			// waypoint setWaypointFormation formation;         # "NO CHANGE", "COLUMN", "STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND"
-setWaypointSpeed			    // waypoint setWaypointSpeed mode;                  # "UNCHANGED", "LIMITED", "NORMAL", "FULL"
-setWaypointForceBehaviour		// waypoint setWaypointForceBehaviour bool;         # Disables autocombat 
-setWaypointLoiterAltitude		// waypoint setWaypointLoiterAltitude loiterAltitude;    #M y guess is this works for aircraft?
-setWaypointLoiterRadius			// waypoint setWaypointLoiterRadius radius;         # Loiter system?
-setWaypointPosition			    // waypoint setWaypointPosition [center, radius];
-setWaypointScript			    // waypoint setWaypointScript command;
-setWaypointStatements			// waypoint setWaypointStatements [condition, statement] # Waypoint completed upon condition, then executes statement; this = groupLeader; thisList = groupUnits
-setWaypointTimeout			    // waypoint setWaypointTimeout [min, mid, max]      # Time between condition satisfaction and completion of waypoint
+selectLeader                            // group selectLeader unitName;
+setBehaviour                            // groupName setBehaviour behaviour;                            # "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"    
+setBehaviourStrong                      // groupName setBehaviourStrong behaviour;                      # Same as "setBehaviour" only it's forced (Eg. ignoring autocombat?)
+setCombatMode                           // group setCombatMode mode;                                    # "BLUE" : Never fire, keep formation, "GREEN" : Hold fire, keep formation, "WHITE" : Hold fire, engage at will/loose formation, "YELLOW" : Fire at will, keep formation, "RED" : Fire at will, engage at will/loose formation
+setFormation                            // group setFormation formation;                                # "COLUMN", "STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND"
+setFormDir                              // group setFormDir heading;
+setSpeedMode                            // groupName setSpeedMode mode;                                 # "UNCHANGED" (unchanged), "LIMITED" (half speed), "NORMAL" (full speed, maintain formation), "FULL" (do not wait for any other units in formation)
+
+createGuardedPoint	                // _id = createGuardedPoint [side, position, -1, objNull];                   # empty, east, west, independent, civilian
+addWaypoint		                // _id = groupName addWaypoint [center, radius, index, name];
+copyWaypoints                           // groupTo copyWaypoints groupFrom;                              # Copy the chain of waypoints from source to target group.
+
+setWaypointType			        // waypoint setWaypointType type                    # "MOVE", "DESTROY", "GETIN", "SAD" (Seek And Destroy), "JOIN", "LEADER", "GETOUT", "CYCLE", "LOAD", "UNLOAD", "TR UNLOAD" (transport unload), "HOLD", "SENTRY", "GUARD", "TALK", "SCRIPTED", "SUPPORT", "GETIN NEAREST", "DISMISS", "LOITER" , "HOOK", "UNHOOK"
+setWaypointBehaviour		        // waypoint setWaypointBehaviour mode;              # "UNCHANGED", "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"
+setWaypointCombatMode		        // waypoint setWaypointCombatMode mode;             # Rules of Engagement: https://community.bistudio.com/wiki/setWaypointCombatMode
+setWaypointCompletionRadius	        // waypoint setWaypointCompletionRadius radius;     # Waypoint completed within a certain range
+setWaypointFormation		        // waypoint setWaypointFormation formation;         # "NO CHANGE", "COLUMN", "STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND"
+setWaypointSpeed                        // waypoint setWaypointSpeed mode;                  # "UNCHANGED", "LIMITED", "NORMAL", "FULL"
+setWaypointForceBehaviour	        // waypoint setWaypointForceBehaviour bool;         # Disables autocombat 
+setWaypointLoiterAltitude	        // waypoint setWaypointLoiterAltitude loiterAltitude;    #My guess is this works for aircraft?
+setWaypointLoiterRadius		        // waypoint setWaypointLoiterRadius radius;         # Loiter system?
+setWaypointPosition		        // waypoint setWaypointPosition [center, radius];
+setWaypointScript		        // waypoint setWaypointScript command;
+setWaypointStatements		        // waypoint setWaypointStatements [condition, statement] # Waypoint completed upon condition, then executes statement; this = groupLeader; thisList = groupUnits
+setWaypointTimeout		        // waypoint setWaypointTimeout [min, mid, max]      # Time between condition satisfaction and completion of waypoint
 
 
 
